@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DisruptiveDelivery</string>
+    <string name="send_package">Send Package</string>
+    <string name="track_package">Track Package</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="log_out">Log Out</string>
 </resources>
