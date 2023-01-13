@@ -14,49 +14,113 @@
         android:orientation="vertical"
         tools:context=".SendPackageActivity">
 
-        <EditText
-            android:id="@+id/et_number_of_packages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:autofillHints="1"
-            android:hint="Number of Packages to send"
-            android:inputType="number"
-            android:minHeight="48dp" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_all_packages_same_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:lines="2"
-            android:minHeight="48dp"
-            android:text="All Packages have same destination address?" />
+        <!--        <EditText-->
+        <!--            android:id="@+id/et_number_of_packages"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="20dp"-->
+        <!--            android:autofillHints="1"-->
+        <!--            android:hint="Number of Packages to send"-->
+        <!--            android:inputType="number"-->
+        <!--            android:minHeight="48dp" />-->
 
-        <EditText
-            android:id="@+id/et_destination_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="Destination Address"
-            android:inputType="textPostalAddress"
-            android:minHeight="48dp" />
+        <!--        <androidx.appcompat.widget.SwitchCompat-->
+        <!--            android:id="@+id/switch_all_packages_same_address"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="20dp"-->
+        <!--            android:lines="2"-->
+        <!--            android:minHeight="48dp"-->
+        <!--            android:text="All Packages have same destination address?" />-->
 
-        <EditText
-            android:id="@+id/et_package_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="Package Weight in grams"
-            android:inputType="number"
-            android:minHeight="48dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_destination_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination Address"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/flexboxLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexboxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:alignContent="stretch"
+                app:alignItems="stretch"
+                app:flexWrap="wrap"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <EditText
+                    android:id="@+id/et_street_and_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Street and Number"
+                    android:inputType="textPostalAddress"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="TextFields" />
+
+                <EditText
+                    android:id="@+id/et_zipcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:hint="Zipcode"
+                    android:inputType="textPostalAddress"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/et_street_and_number" />
+
+                <EditText
+                    android:id="@+id/et_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:hint="City"
+                    android:inputType="textPostalAddress"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="TextFields" />
+
+                <EditText
+                    android:id="@+id/et_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:hint="Country"
+                    android:inputType="textPostalAddress"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="TextFields" />
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tv_package_dimensions"
@@ -70,41 +134,97 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/et_package_width"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:hint="Width"
-                android:inputType="number"
-                android:minHeight="48dp"
+                android:text="Width"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/numberPickerWidth"
+                app:layout_constraintEnd_toEndOf="@+id/numberPickerWidth"
+                app:layout_constraintStart_toStartOf="@+id/numberPickerWidth" />
+
+            <NumberPicker
+                android:id="@+id/numberPickerWidth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_package_dimensions"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/et_package_depth"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:hint="Depth"
-                android:inputType="number"
-                android:minHeight="48dp"
+                android:text="Depth"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/numberPickerDepth"
+                app:layout_constraintEnd_toEndOf="@+id/numberPickerDepth"
+                app:layout_constraintStart_toStartOf="@+id/numberPickerDepth" />
+
+            <NumberPicker
+                android:id="@+id/numberPickerDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_package_width"
+                app:layout_constraintEnd_toStartOf="@+id/numberPickerHeight"
+                app:layout_constraintStart_toEndOf="@+id/numberPickerWidth"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/et_package_height"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:hint="Height"
-                android:inputType="number"
-                android:minHeight="48dp"
+                android:text="Height"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/numberPickerHeight"
+                app:layout_constraintEnd_toEndOf="@+id/numberPickerHeight"
+                app:layout_constraintStart_toStartOf="@+id/numberPickerHeight" />
+
+            <NumberPicker
+                android:id="@+id/numberPickerHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_package_depth"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/et_package_width"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="10dp"-->
+            <!--                android:hint="Width"-->
+            <!--                android:inputType="number"-->
+            <!--                android:minHeight="48dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tv_package_dimensions"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/et_package_depth"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="Depth"-->
+            <!--                android:inputType="number"-->
+            <!--                android:minHeight="48dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toStartOf="@+id/et_package_height"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/et_package_width"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/et_package_height"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="Height"-->
+            <!--                android:inputType="number"-->
+            <!--                android:minHeight="48dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -113,7 +233,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:minHeight="48dp"
-            android:text="Fragile?" />
+            android:text="Breakable?" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:minHeight="48dp"
+            android:text="Perishable (Food)?" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_priority_option"
