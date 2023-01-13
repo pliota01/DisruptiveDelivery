@@ -39,15 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:padding="20dp">
+            android:paddingHorizontal="20dp">
 
             <TextView
                 android:id="@+id/tv_destination_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Destination Address"
+                android:text="@string/destination_address"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/flexboxLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,70 +55,116 @@
                 android:id="@+id/flexboxLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="20dp"
                 app:alignContent="stretch"
                 app:alignItems="stretch"
                 app:flexWrap="wrap"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_destination_address">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/et_street_and_number"
+                    android:contentDescription="@string/street_and_number"
+                    android:accessibilityLiveRegion="polite">
 
-                <EditText
-                    android:id="@+id/et_street_and_number"
+                    <EditText
+                        android:id="@+id/et_street_and_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/street_and_number"
+                        android:inputType="textPostalAddress"
+                        android:minHeight="48dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="TextFields"
+                        android:autofillHints="postalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Street and Number"
-                    android:inputType="textPostalAddress"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="TextFields" />
+                    android:labelFor="@+id/et_zipcode"
+                    android:contentDescription="@string/street_and_number"
+                    android:accessibilityLiveRegion="polite">
 
-                <EditText
-                    android:id="@+id/et_zipcode"
+                    <EditText
+                        android:id="@+id/et_zipcode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="postalCode"
+                        android:hint="@string/zipcode"
+                        android:inputType="textPostalAddress"
+                        android:minHeight="48dp"
+                        android:minEms="4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/et_street_and_number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:hint="Zipcode"
-                    android:inputType="textPostalAddress"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/et_street_and_number" />
+                    android:labelFor="@+id/et_city"
+                    android:contentDescription="@string/street_and_number"
+                    android:accessibilityLiveRegion="polite">
 
-                <EditText
-                    android:id="@+id/et_city"
+                    <EditText
+                        android:id="@+id/et_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:minEms="4"
+                        android:hint="@string/city"
+                        android:inputType="textPostalAddress"
+                        android:minHeight="48dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="TextFields"
+                        android:autofillHints="city"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:hint="City"
-                    android:inputType="textPostalAddress"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="TextFields" />
+                    android:labelFor="@+id/et_country"
+                    android:contentDescription="@string/street_and_number"
+                    android:accessibilityLiveRegion="polite">
 
-                <EditText
-                    android:id="@+id/et_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:hint="Country"
-                    android:inputType="textPostalAddress"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="TextFields" />
+                    <EditText
+                        android:id="@+id/et_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:minEms="4"
+                        android:hint="@string/country"
+                        android:inputType="textPostalAddress"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="TextFields"
+                        android:autofillHints="country"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--Divider line-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:gravity="center">
 
             <TextView
@@ -127,8 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_marginStart="4dp"
-                android:text="Package Dimensions: "
+                android:text="@string/package_dimensions_cm"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +182,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Width"
+                android:text="@string/width"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/numberPickerWidth"
                 app:layout_constraintEnd_toEndOf="@+id/numberPickerWidth"
@@ -157,7 +201,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Depth"
+                android:text="@string/depth"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/numberPickerDepth"
                 app:layout_constraintEnd_toEndOf="@+id/numberPickerDepth"
@@ -176,7 +220,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Height"
+                android:text="@string/height"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/numberPickerHeight"
                 app:layout_constraintEnd_toEndOf="@+id/numberPickerHeight"
@@ -228,27 +272,49 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:minHeight="48dp"
-            android:text="Breakable?" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:minHeight="48dp"
-            android:text="Perishable (Food)?" />
+        <!--Divider line-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_priority_option"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:minHeight="48dp"
-            android:text="Want to be treated faster? (Might cost more)" />
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexboxLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:alignContent="stretch"
+            app:alignItems="stretch"
+            app:flexWrap="wrap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_breakable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:minHeight="48dp"
+                android:text="@string/breakable" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_perishable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:minHeight="48dp"
+                android:text="@string/perishable" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <!--        <androidx.appcompat.widget.SwitchCompat-->
+        <!--            android:id="@+id/switch_priority_option"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="20dp"-->
+        <!--            android:minHeight="48dp"-->
+        <!--            android:text="Want to be treated faster? (Might cost more)" />-->
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_pick_up_option"
@@ -256,15 +322,17 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:minHeight="48dp"
-            android:text="Do you want delivery driver to pick it up from your place?" />
+            android:text="@string/pick_up_option" />
 
         <EditText
             android:id="@+id/et_sender_address"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
             android:layout_height="wrap_content"
-            android:hint="Address for our driver to pick the package from"
+            android:hint="@string/address_for_pick_up"
             android:inputType="textPostalAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:autofillHints="postalAddress"/>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -276,9 +344,10 @@
                 android:id="@+id/tv_pick_package"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingHorizontal="10dp"
                 android:gravity="center"
-                android:hint="Pick package from "
+                android:hint="@string/pick_package_from"
                 android:minHeight="48dp"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -289,22 +358,22 @@
                 android:id="@+id/et_pick_up_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:hint="start time"
+                android:hint="@string/start_time"
                 android:inputType="time"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_pick_package"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:autofillHints="time"/>
 
             <TextView
                 android:id="@+id/tv_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:text=" to "
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/et_pick_up_end_time"
                 app:layout_constraintStart_toEndOf="@+id/et_pick_up_start_time"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -313,13 +382,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:hint="end time"
+                android:autofillHints="time"
+                android:hint="@string/end_time"
                 android:inputType="time"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_to"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/btn_order_and_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="30dp"
+            android:text="@string/order_and_pay" />
 
 
         <!--    Number of Packages-->
