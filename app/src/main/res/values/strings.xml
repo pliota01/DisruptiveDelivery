@@ -22,4 +22,14 @@
     <string name="start_time">start time</string>
     <string name="end_time">end time</string>
     <string name="order_and_pay">Order and Pay</string>
+    <string name="info">Info</string>
+    <string name="code">Code</string>
+    <string name="track_package_by_code">Track Package by Code</string>
+    <string name="welcome">Welcome to Disruptive Delivery!</string>
+    <string name="join_us">Join Us for Fast and Environmentally Friendly Deliveries All Around the World</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
 </resources>

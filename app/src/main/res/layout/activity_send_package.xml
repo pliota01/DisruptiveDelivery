@@ -7,6 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +15,15 @@
         android:orientation="vertical"
         tools:context=".SendPackageActivity">
 
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_send_package"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:theme="@style/Widget.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Send Package" />
 
         <!--        <EditText-->
         <!--            android:id="@+id/et_number_of_packages"-->
@@ -35,124 +45,18 @@
         <!--            android:text="All Packages have same destination address?" />-->
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:paddingHorizontal="20dp">
+        <TextView
+            android:id="@+id/tv_destination_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/destination_address"
+            android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/tv_destination_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/destination_address"
-                android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/destination_address_form"
+            layout="@layout/postal_address_form" />
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/flexboxLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="20dp"
-                app:alignContent="stretch"
-                app:alignItems="stretch"
-                app:flexWrap="wrap"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_destination_address">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/et_street_and_number"
-                    android:contentDescription="@string/street_and_number"
-                    android:accessibilityLiveRegion="polite">
-
-                    <EditText
-                        android:id="@+id/et_street_and_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/street_and_number"
-                        android:inputType="textPostalAddress"
-                        android:minHeight="48dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="TextFields"
-                        android:autofillHints="postalAddress" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/et_zipcode"
-                    android:contentDescription="@string/street_and_number"
-                    android:accessibilityLiveRegion="polite">
-
-                    <EditText
-                        android:id="@+id/et_zipcode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:autofillHints="postalCode"
-                        android:hint="@string/zipcode"
-                        android:inputType="textPostalAddress"
-                        android:minHeight="48dp"
-                        android:minEms="4"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/et_street_and_number" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/et_city"
-                    android:contentDescription="@string/street_and_number"
-                    android:accessibilityLiveRegion="polite">
-
-                    <EditText
-                        android:id="@+id/et_city"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:minEms="4"
-                        android:hint="@string/city"
-                        android:inputType="textPostalAddress"
-                        android:minHeight="48dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="TextFields"
-                        android:autofillHints="city"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/et_country"
-                    android:contentDescription="@string/street_and_number"
-                    android:accessibilityLiveRegion="polite">
-
-                    <EditText
-                        android:id="@+id/et_country"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:minEms="4"
-                        android:hint="@string/country"
-                        android:inputType="textPostalAddress"
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="TextFields"
-                        android:autofillHints="country"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </com.google.android.flexbox.FlexboxLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--Divider line-->
         <View
@@ -324,15 +228,18 @@
             android:minHeight="48dp"
             android:text="@string/pick_up_option" />
 
-        <EditText
-            android:id="@+id/et_sender_address"
-            android:layout_width="match_parent"
-            android:layout_margin="20dp"
+
+        <TextView
+            android:id="@+id/tv_sender_address"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/address_for_pick_up"
-            android:inputType="textPostalAddress"
-            android:minHeight="48dp"
-            android:autofillHints="postalAddress"/>
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/address_for_pick_up"
+            android:textSize="25sp" />
+
+        <include
+            android:id="@+id/sender_address_form"
+            layout="@layout/postal_address_form" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -345,10 +252,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:paddingHorizontal="10dp"
                 android:gravity="center"
                 android:hint="@string/pick_package_from"
                 android:minHeight="48dp"
+                android:paddingHorizontal="10dp"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -358,13 +265,13 @@
                 android:id="@+id/et_pick_up_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autofillHints="time"
                 android:hint="@string/start_time"
                 android:inputType="time"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_pick_package"
-                app:layout_constraintTop_toTopOf="parent"
-                android:autofillHints="time"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_to"

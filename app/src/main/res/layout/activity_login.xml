@@ -31,8 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Welcome to Disruptive Delivery!"
-                android:textColor="@color/black"
+                android:text="@string/welcome"
                 android:textSize="28sp" />
 
             <TextView
@@ -44,8 +43,7 @@
                 android:gravity="center"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="Join Us for Fast and Environmentally Friendly Deliveries All Around the World"
-                android:textColor="@color/black"
+                android:text="@string/join_us"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -60,11 +58,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:autofillHints="emailAddress"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:paddingHorizontal="5dp"
                     android:minHeight="48dp"
+                    android:paddingHorizontal="5dp"
                     android:singleLine="true"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -83,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:autofillHints="password"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:minHeight="48dp"
@@ -93,7 +91,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            -->
 
             <Button
                 android:id="@+id/loginButton"
@@ -102,7 +99,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="Log In"
+                android:text="@string/log_in"
                 android:textAllCaps="false"
                 android:textSize="25sp" />
 
@@ -115,7 +112,7 @@
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Forgot Password?"
+                android:text="@string/forgot_password"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="18sp" />
 
@@ -128,7 +125,7 @@
                 android:alpha="0.7"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Don't have an account?"
+                android:text="@string/don_t_have_an_account"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

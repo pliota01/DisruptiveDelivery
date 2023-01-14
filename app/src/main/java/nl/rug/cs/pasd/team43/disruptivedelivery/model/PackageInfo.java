@@ -1,11 +1,11 @@
 package nl.rug.cs.pasd.team43.disruptivedelivery.model;
 
 public class PackageInfo {
-    private int xInMm;
-    private int yInMm;
-    private int zInMm;
-    private boolean perishable;
-    private boolean breakable;
+    private final int xInMm;
+    private final int yInMm;
+    private final int zInMm;
+    private final boolean perishable;
+    private final boolean breakable;
 
     public PackageInfo(int xInCm, int yInCm, int zInCm, boolean perishable, boolean breakable) {
         this.xInMm = xInCm;
@@ -15,15 +15,23 @@ public class PackageInfo {
         this.perishable = perishable;
     }
 
-    public int getxInMm() {
+    public int getXInMm() {
         return 10 * xInMm;
     }
 
-    public int getyInMm() {
+    public int getYInMm() {
         return 10 * yInMm;
     }
 
-    public int getzInMm() {
+    public int getZInMm() {
         return 10 * zInMm;
+    }
+
+    public boolean isPerishable() {
+        return perishable;
+    }
+
+    public boolean isBreakable() {
+        return breakable;
     }
 }
