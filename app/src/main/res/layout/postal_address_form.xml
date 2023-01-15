@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_street_and_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:accessibilityLiveRegion="polite"
@@ -42,6 +43,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_zipcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:accessibilityLiveRegion="polite"
@@ -64,6 +66,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:accessibilityLiveRegion="polite"
@@ -86,6 +89,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:accessibilityLiveRegion="polite"
