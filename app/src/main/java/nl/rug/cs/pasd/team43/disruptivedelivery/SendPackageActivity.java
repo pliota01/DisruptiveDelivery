@@ -89,7 +89,7 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
         etCityReceiver = cl.findViewById(R.id.et_city);
         etCountryReceiver = cl.findViewById(R.id.et_country);
 
-        cl = findViewById(R.id.destination_address_form);
+        cl = findViewById(R.id.sender_address_form);
 
         tilStreetAndNumberSender = cl.findViewById(R.id.til_street_and_number);
         tilZipcodeSender = cl.findViewById(R.id.til_zipcode);
@@ -161,9 +161,9 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
 
 
         String streetAndNumText = etStreetAndNumber.getText().toString();
-//        String zipcodeText = etZipCode.getText().toString();
-//        String cityText = etCity.getText().toString();
-//        String countryText = etCountry.getText().toString();
+        String zipcodeText = etZipCode.getText().toString();
+        String cityText = etCity.getText().toString();
+        String countryText = etCountry.getText().toString();
 
         boolean errorOccurred = false;
 
@@ -177,6 +177,30 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
             errorOccurred = true;
         } else {
             tilStreetAndNumber.setErrorEnabled(false);
+        }
+
+        if (zipcodeText.isEmpty()) {
+            tilZipcode.setError("Needs to be filled");
+            tilZipcode.setErrorEnabled(true);
+            errorOccurred = true;
+        } else {
+            tilZipcode.setErrorEnabled(false);
+        }
+
+        if (cityText.isEmpty()) {
+            tilCity.setError("Needs to be filled");
+            tilCity.setErrorEnabled(true);
+            errorOccurred = true;
+        } else {
+            tilCity.setErrorEnabled(false);
+        }
+
+        if (countryText.isEmpty()) {
+            tilCountry.setError("Needs to be filled");
+            tilCountry.setErrorEnabled(true);
+            errorOccurred = true;
+        } else {
+            tilCountry.setErrorEnabled(false);
         }
         return !errorOccurred;
     }
@@ -209,7 +233,7 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
 
 
     private boolean isFormCorrectlyFilled() {
-
+        boolean errorOccurred = false;
         if (!isAddressValid(tilStreetAndNumberReceiver,
                 tilZipcodeReceiver,
                 tilCityReceiver,
@@ -218,11 +242,10 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
                 etZipCodeReceiver,
                 etCityReceiver,
                 etCountryReceiver)) {
-            return false;
+            errorOccurred = true;
         }
 
         if (switchPrickUpOption.isChecked()) {
-            Toast.makeText(SendPackageActivity.this, "Pick Up Option is Checked", Toast.LENGTH_SHORT).show();
             if (!isAddressValid(tilStreetAndNumberSender,
                     tilZipcodeSender,
                     tilCitySender,
@@ -231,10 +254,10 @@ public class SendPackageActivity extends AppCompatActivity implements View.OnCli
                     etZipCodeSender,
                     etCitySender,
                     etCountrySender)) {
-                return false;
+                errorOccurred = true;
             }
         }
-        return true;
+        return !errorOccurred;
     }
 
 

@@ -3,6 +3,7 @@ package nl.rug.cs.pasd.team43.disruptivedelivery;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.item_info) {
             // User chose the "Settings" item, show the app settings UI...
             Toast.makeText(MainActivity.this, "Info Selected", Toast.LENGTH_SHORT).show();
+            InformationFragment infoFragment = new InformationFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_main, infoFragment).addToBackStack("InfoFragment").commit();
             return true;
         }
         if (id == R.id.item_profile) {

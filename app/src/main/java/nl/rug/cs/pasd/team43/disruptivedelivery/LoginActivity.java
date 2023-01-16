@@ -28,11 +28,12 @@ import android.os.Bundle;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView forgotPasswordTV;
-    private TextView dontHaveAccountTV;
+    private TextView tvForgotPassword;
+    private TextView tvDontHaveAccount;
     private Button logInBtn;
-    private TextInputLayout emailError, passwordError;
-    private EditText email, password;
+
+    private TextInputLayout tilEmail, tilPassword;
+    private EditText etEmail, etPassword;
     private boolean isEmailValid, isPasswordValid;
 
 
@@ -43,16 +44,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         logInBtn = findViewById(R.id.loginButton);
-        forgotPasswordTV = findViewById(R.id.forgotPasswordTextView);
-        dontHaveAccountTV = findViewById(R.id.dontHaveAccountTextView);
-        email = findViewById(R.id.loginEmailEditText);
-        password = findViewById(R.id.loginPasswordEditText);
-        emailError = findViewById(R.id.loginEmailError);
-        passwordError = findViewById(R.id.loginPasswordError);
+        tvForgotPassword = findViewById(R.id.forgotPasswordTextView);
+        tvDontHaveAccount = findViewById(R.id.dontHaveAccountTextView);
+        etEmail = findViewById(R.id.et_login_email);
+        etPassword = findViewById(R.id.et_login_password);
+        tilEmail = findViewById(R.id.til_login_email);
+        tilPassword = findViewById(R.id.til_login_password);
 
         logInBtn.setOnClickListener(this);
-        forgotPasswordTV.setOnClickListener(this);
-        dontHaveAccountTV.setOnClickListener(this);
+        tvForgotPassword.setOnClickListener(this);
+        tvDontHaveAccount.setOnClickListener(this);
 
     }
 

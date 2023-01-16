@@ -47,13 +47,13 @@
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/loginEmailError"
+                android:id="@+id/til_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
                 <EditText
-                    android:id="@+id/loginEmailEditText"
+                    android:id="@+id/et_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -69,14 +69,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/loginPasswordError"
+                android:id="@+id/til_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/loginPasswordEditText"
+                    android:id="@+id/et_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -90,7 +90,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
+            
 
             <Button
                 android:id="@+id/loginButton"

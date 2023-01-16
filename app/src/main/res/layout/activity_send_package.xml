@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view_send_package"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical">
+
 
 
     <LinearLayout
@@ -16,7 +17,6 @@
         android:orientation="vertical"
         tools:context=".SendPackageActivity">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_send_package"
             android:layout_width="match_parent"
@@ -25,26 +25,6 @@
             android:theme="@style/Widget.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Send Package" />
-
-        <!--        <EditText-->
-        <!--            android:id="@+id/et_number_of_packages"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="20dp"-->
-        <!--            android:autofillHints="1"-->
-        <!--            android:hint="Number of Packages to send"-->
-        <!--            android:inputType="number"-->
-        <!--            android:minHeight="48dp" />-->
-
-        <!--        <androidx.appcompat.widget.SwitchCompat-->
-        <!--            android:id="@+id/switch_all_packages_same_address"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="20dp"-->
-        <!--            android:lines="2"-->
-        <!--            android:minHeight="48dp"-->
-        <!--            android:text="All Packages have same destination address?" />-->
-
 
         <TextView
             android:id="@+id/tv_destination_address"
@@ -139,41 +119,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <!--            <EditText-->
-            <!--                android:id="@+id/et_package_width"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="10dp"-->
-            <!--                android:hint="Width"-->
-            <!--                android:inputType="number"-->
-            <!--                android:minHeight="48dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintStart_toEndOf="@+id/tv_package_dimensions"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--            <EditText-->
-            <!--                android:id="@+id/et_package_depth"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:hint="Depth"-->
-            <!--                android:inputType="number"-->
-            <!--                android:minHeight="48dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toStartOf="@+id/et_package_height"-->
-            <!--                app:layout_constraintStart_toEndOf="@+id/et_package_width"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--            <EditText-->
-            <!--                android:id="@+id/et_package_height"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:hint="Height"-->
-            <!--                android:inputType="number"-->
-            <!--                android:minHeight="48dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

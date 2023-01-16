@@ -32,4 +32,8 @@
     <string name="log_in">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_of_disruptive_delivery">Disruptive Delivery is the future of the delivering market. We provide accessibility around the world and simplicity in the process of delivery, while keeping a sustainable attitude.</string>
+    <string name="disruptive_delivery">Disruptive Delivery</string>
 </resources>
