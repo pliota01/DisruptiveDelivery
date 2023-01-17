@@ -1,0 +1,534 @@
+{
+  "openapi":"3.0.2",
+  "info":{
+    "title":"PASD Webshop",
+    "version":"0.1.0"
+  },
+  "paths":{
+    "/api/order/":{
+      "get":{
+        "tags":["orders"],
+        "summary":"Retrieve a list of all Orders.",
+        "description":"Return a list of available orders.",
+        "operationId":"orders_get_api_order__get",
+        "parameters":[
+          {"description":"The user's API key.",
+            "required":true,
+            "schema":{
+              "title":"X-Api-Key",
+              "type":"string",
+              "description":"The user's API key."
+            },
+            "name":"x-api-key",
+            "in":"header"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Successful Response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ApiOrders"
+                }
+              }
+            }
+          },
+          "422":{
+            "description":"Validation Error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/delivery/":{
+      "post":{
+        "tags":["delivery"],
+        "summary":"Create a new delivery via an offer towards to a specific order",
+        "description":"Post a new delivery",
+        "operationId":"delivery_post_api_delivery__post",
+        "parameters":[
+          {"description":"The user's API key.",
+            "required":true,
+            "schema":{
+              "title":"X-Api-Key",
+              "type":"string",
+              "description":"The user's API key."
+            },
+            "name":"x-api-key",
+            "in":"header"
+          }
+        ],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/ApiOffer"
+              }
+            }
+          },
+          "required":true
+        },
+        "responses":{
+          "200":{
+            "description":"Successful Response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ApiDelivery"
+                }
+              }
+            }
+          },
+          "422":{
+            "description":"Validation Error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/delivery/{delivery_id}":{
+      "get":{
+        "tags":["delivery"],
+        "summary":"Get a delivery.",
+        "description":"Get a specific delivery, via it's delivery id",
+        "operationId":"delivery_get_api_delivery__delivery_id__get",
+        "parameters":[
+          {
+            "description":"The ID of the delivery",
+            "required":true,
+            "schema":{
+              "title":"Delivery Id",
+              "type":"string",
+              "description":"The ID of the delivery"
+            },
+            "name":"delivery_id",
+            "in":"path"
+          },
+          {
+            "required":true,
+            "schema":{
+              "title":"X-Api-Key",
+              "type":"string"
+            },
+            "name":"x-api-key",
+            "in":"header"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Successful Response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ApiDelivery"
+                }
+              }
+            }
+          },
+          "422":{
+            "description":"Validation Error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch":{
+        "tags":["delivery"],
+        "summary":"(Patch) Update a delivery",
+        "description":"Update an existing delivery via its id",
+        "operationId":"delivery_patch_api_delivery__delivery_id__patch",
+        "parameters":[
+          {
+            "description":"The ID of the delivery",
+            "required":true,
+            "schema":{
+              "title":"Delivery Id",
+              "type":"string",
+              "description":"The ID of the delivery"
+            },
+            "name":"delivery_id","in":"path"
+          },
+          {
+            "required":true,
+            "schema":{
+              "title":"X-Api-Key",
+              "type":"string"
+            },
+            "name":"x-api-key",
+            "in":"header"
+          }
+        ],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/ApiDeliveryStatusUpdate"
+              },
+              "examples":{
+                "After picking up":{
+                  "summary":"Del. picked up",
+                  "description":"An example status update for when the delivery was picked up",
+                  "value":{
+                    "status":"TRN"
+                  }
+                },
+                "After delivering":{
+                  "summary":"Del. delivered",
+                  "description":"An example status update for when the delivery is completed",
+                  "value":{
+                    "status":"DEL",
+                    "actual_deliver_datetime":"2022-12-08T08:34:29.076Z"
+                  }
+                }
+              }
+            }
+          },
+          "required":true
+        },
+        "responses":{
+          "200":{
+            "description":"Successful Response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ApiDelivery"
+                }
+              }
+            }
+          },
+          "422":{
+            "description":"Validation Error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label":{
+      "post":{
+        "tags":["labels"],
+        "summary":"Upload label for an order",
+        "operationId":"label_post_api_label_post",
+        "parameters":
+        [
+          {"description":"Delivery id of the delivery the label is for",
+            "required":true,
+            "schema":{
+              "title":"Delivery Id",
+              "type":"string",
+              "description":"Delivery id of the delivery the label is for"
+            },
+            "name":"delivery_id",
+            "in":"query"
+          },
+          {
+            "required":true,
+            "schema":{
+              "title":"X-Api-Key",
+              "type":"string"
+            },
+            "name":"x-api-key",
+            "in":"header"
+          }
+        ],
+        "requestBody":{
+          "content":{
+            "multipart/form-data":{
+              "schema":{
+                "$ref":"#/components/schemas/Body_label_post_api_label_post"
+              }
+            }
+          },
+          "required":true
+        },
+        "responses":{
+          "200":{
+            "description":"Successful Response",
+            "content":{
+              "application/json":{
+                "schema":{}
+              }
+            }
+          },
+          "422":{
+            "description":"Validation Error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components":{
+    "schemas":{
+      "ApiAddressInfo":{
+        "title":"ApiAddressInfo",
+        "required":[
+          "name",
+          "street_and_number",
+          "zipcode",
+          "city",
+          "country"
+        ],
+        "type":"object",
+        "properties":{
+          "name":{
+            "title":"Name",
+            "type":"string"
+          },
+          "street_and_number":{
+            "title":"Street And Number",
+            "type":"string"
+          },
+          "zipcode":{
+            "title":"Zipcode",
+            "type":"string"
+          },
+          "city":{
+            "title":"City",
+            "type":"string"
+          },
+          "country":{
+            "title":"Country",
+            "type":"string"
+          }
+        }
+      },
+      "ApiDelivery":{
+        "title":"ApiDelivery",
+        "required":[
+          "order_id",
+          "cost_in_cents",
+          "id"
+        ],
+        "type":"object",
+        "properties":{
+          "expected_deliver_datetime":{
+            "title":"Expected Deliver Datetime",
+            "type":"string",
+            "format":"date-time"
+          },
+          "actual_deliver_datetime":{
+            "title":"Actual Deliver Datetime",
+            "type":"string",
+            "format":"date-time"
+          },
+          "order_id":{
+            "title":"Order Id",
+            "type":"integer"
+          },
+          "cost_in_cents":{
+            "title":"Cost In Cents",
+            "type":"integer"
+          },
+          "status":{
+            "allOf":[
+              {
+                "$ref":"#/components/schemas/Status"
+              }
+            ],
+            "default":"EXP"
+          },
+          "id":{
+            "title":"Id",
+            "type":"integer"
+          }
+        }
+      },
+      "ApiDeliveryStatusUpdate":{
+        "title":"ApiDeliveryStatusUpdate",
+        "required":["status"],
+        "type":"object",
+        "properties":{
+          "status":{
+            "$ref":"#/components/schemas/Status"
+          },
+          "actual_deliver_datetime":{
+            "title":"Actual Deliver Datetime",
+            "type":"string",
+            "format":"date-time"
+          }
+        }
+      },
+      "ApiOffer":{
+        "title":"ApiOffer",
+        "required":[
+          "price_in_cents",
+          "expected_delivery_datetime",
+          "order_id"
+        ],
+        "type":"object",
+        "properties":{
+          "price_in_cents":{
+            "title":"Price In Cents",
+            "type":"integer"
+          },
+          "expected_delivery_datetime":{
+            "title":"Expected Delivery Datetime",
+            "type":"string",
+            "format":"date-time"
+          },
+          "order_id":{
+            "title":"Order Id",
+            "type":"integer"
+          }
+        }
+      },
+      "ApiOrder":{
+        "title":"ApiOrder",
+        "required":[
+          "send_date",
+          "x_in_mm",
+          "y_in_mm",
+          "z_in_mm",
+          "is_breakable",
+          "is_perishable",
+          "sender_info",
+          "receiver_info",
+          "id"
+        ],
+        "type":"object",
+        "properties":{
+          "send_date":{
+            "title":"Send Date",
+            "type":"string",
+            "format":"date"
+          },
+          "x_in_mm":{
+            "title":"X In Mm",
+            "type":"integer"
+          },
+          "y_in_mm":{
+            "title":"Y In Mm",
+            "type":"integer"
+          },
+          "z_in_mm":{
+            "title":"Z In Mm",
+            "type":"integer"
+          },
+          "is_breakable":{
+            "title":"Is Breakable",
+            "type":"boolean"
+          },
+          "is_perishable":{
+            "title":"Is Perishable",
+            "type":"boolean"
+          },
+          "sender_info":{
+            "$ref":"#/components/schemas/ApiAddressInfo"
+          },
+          "receiver_info":{
+            "$ref":"#/components/schemas/ApiAddressInfo"
+          },
+          "id":{
+            "title":"Id",
+            "type":"integer"
+          }
+        }
+      },
+      "ApiOrders":{
+        "title":"ApiOrders",
+        "required":["orders"],
+        "type":"object",
+        "properties":{
+          "orders":{
+            "title":"Orders",
+            "type":"array",
+            "items":{
+              "$ref":"#/components/schemas/ApiOrder"
+            }
+          }
+        }
+      },
+      "Body_label_post_api_label_post":{
+        "title":"Body_label_post_api_label_post",
+        "required":["labelFile"],
+        "type":"object",
+        "properties":{
+          "labelFile":{
+            "title":"Labelfile",
+            "type":"string",
+            "format":"binary"
+          }
+        }
+      },
+      "HTTPValidationError":{
+        "title":"HTTPValidationError",
+        "type":"object",
+        "properties":{
+          "detail":{
+            "title":"Detail",
+            "type":"array",
+            "items":{
+              "$ref":"#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "Status":{
+        "title":"Status",
+        "enum":["EXP","REJ","RFP","TRN","DEL"],
+        "type":"string",
+        "description":"An enumeration."
+      },
+      "ValidationError":{
+        "title":"ValidationError",
+        "required":["loc","msg","type"],
+        "type":"object",
+        "properties":{
+          "loc":{
+            "title":"Location",
+            "type":"array",
+            "items":{
+              "anyOf":
+              [
+                {
+                  "type":"string"
+                },
+                {
+                  "type":"integer"
+                }
+              ]
+            }
+          },
+          "msg":{
+            "title":"Message",
+            "type":"string"
+          },
+          "type":{
+            "title":"Error Type",
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}
