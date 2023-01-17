@@ -3,12 +3,88 @@ package nl.rug.cs.pasd.team43.disruptivedelivery;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity {
+import java.util.regex.Pattern;
+
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%_^&+=])(?=\\S+$).{8,}$");
+
+    private EditText editTextRegisterFirstName, editTextRegisterLastName, editTextRegisterEmail, editTextRegisterMobile, editTextRegisterPwd, editTextRegisterConfirmPwd;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        getSupportActionBar().setTitle("Register");
+
+        Toast.makeText(RegisterActivity.this, "You can register now", Toast.LENGTH_LONG).show();
+
+        editTextRegisterFirstName = findViewById(R.id.firstNameEditText);
+        editTextRegisterLastName = findViewById(R.id.lastNameEditText);
+        editTextRegisterEmail = findViewById(R.id.emailEditText);
+        editTextRegisterMobile = findViewById(R.id.phoneNumberEditText);
+        editTextRegisterPwd = findViewById(R.id.passwordEditText);
+        editTextRegisterConfirmPwd = findViewById(R.id.confirmPasswordEditText);
+
+        Button buttonRegister = findViewById(R.id.registerButton);
+
+        buttonRegister.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.registerButton) {
+            String textFirstName = editTextRegisterFirstName.getText().toString();
+            String textLastName = editTextRegisterLastName.getText().toString();
+            String textEmail = editTextRegisterEmail.getText().toString();
+            String textMobile = editTextRegisterMobile.getText().toString();
+            String textPwd = editTextRegisterPwd.getText().toString();
+            String textConfirmPwd = editTextRegisterConfirmPwd.getText().toString();
+
+            if (TextUtils.isEmpty(textFirstName)) {
+                Toast.makeText(RegisterActivity.this, "Please enter your first name.", Toast.LENGTH_LONG).show();
+                editTextRegisterFirstName.setError("First name is required");
+                editTextRegisterFirstName.requestFocus();
+            } else if (TextUtils.isEmpty(textLastName)) {
+                 Toast.makeText(RegisterActivity.this, "Please enter your last name.", Toast.LENGTH_LONG).show();
+                 editTextRegisterLastName.setError("Last name is required");
+                 editTextRegisterLastName.requestFocus();
+            } else if (TextUtils.isEmpty(textEmail)) {
+                 Toast.makeText(RegisterActivity.this, "Please enter your email address.", Toast.LENGTH_LONG).show();
+                 editTextRegisterEmail.setError("Email address is required");
+                 editTextRegisterEmail.requestFocus();
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
+                 Toast.makeText(RegisterActivity.this, "Please re-enter your email address.", Toast.LENGTH_LONG).show();
+                 editTextRegisterEmail.setError("Valid email address is required");
+                 editTextRegisterEmail.requestFocus();
+            } else if (TextUtils.isEmpty(textMobile)) {
+                 Toast.makeText(RegisterActivity.this, "Please enter your telephone number.", Toast.LENGTH_LONG).show();
+                 editTextRegisterMobile.setError("Telephone number is required");
+                 editTextRegisterMobile.requestFocus();
+            } else if (textMobile.length()!=10) {
+                 Toast.makeText(RegisterActivity.this, "Please re-enter your telephone number.", Toast.LENGTH_LONG).show();
+                 editTextRegisterMobile.setError("Valid telephone number is required");
+                 editTextRegisterMobile.requestFocus();
+            } else if (TextUtils.isEmpty(textPwd)) {
+                 Toast.makeText(RegisterActivity.this, "Please enter your password.", Toast.LENGTH_LONG).show();
+                 editTextRegisterPwd.setError("Password is required");
+                 editTextRegisterPwd.requestFocus();
+            }  else if (TextUtils.isEmpty(textConfirmPwd)) {
+                 Toast.makeText(RegisterActivity.this, "Please enter your password again.", Toast.LENGTH_LONG).show();
+                 editTextRegisterConfirmPwd.setError("Password is required");
+                 editTextRegisterConfirmPwd.requestFocus();
+            }
+        }
     }
 }

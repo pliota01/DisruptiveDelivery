@@ -32,4 +32,7 @@
     <string name="log_in">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="disruptive_delivery">Disruptive Delivery</string>
+    <string name="description_disruptive_delivery">The aim of the Disruptive Delivery Company is the ability to ship parcels from anywhere around the world to wherever you want to send it, prioritizing comfort and sustainability.</string>
+    <string name="disruptive_delivery_moto">Distance is not an issue for us!</string>
 </resources>
