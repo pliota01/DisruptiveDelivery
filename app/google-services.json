@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "600373573778",
+    "project_id": "disruptivedelivery-pasdteam43",
+    "storage_bucket": "disruptivedelivery-pasdteam43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600373573778:android:30445119a091d95bf50e4b",
+        "android_client_info": {
+          "package_name": "nl.rug.cs.pasd.team43.disruptivedelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600373573778-n83kpgppnf5dcjiu80aiehfpbqh06oj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANb8qOJVN-ahhpDMQT98WylRH2qCWd4Ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600373573778-n83kpgppnf5dcjiu80aiehfpbqh06oj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

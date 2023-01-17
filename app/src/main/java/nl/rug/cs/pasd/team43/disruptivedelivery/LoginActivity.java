@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.Gravity;
@@ -64,5 +65,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.loginButton) {
+             if (TextUtils.isEmpty(etEmail.getText().toString())) {
+                 Toast.makeText(LoginActivity.this, "Please enter your email address.", Toast.LENGTH_LONG).show();
+                 tilEmail.setError("Email address is required.");
+                 etEmail.requestFocus();
+             } else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.getText().toString()).matches()) {
+                 Toast.makeText(LoginActivity.this, "Please re-enter your email address.", Toast.LENGTH_LONG).show();
+                 tilEmail.setError("Valid email address is required.");
+                 etEmail.requestFocus();
+             }  else if (TextUtils.isEmpty(etPassword.getText().toString())) {
+                 Toast.makeText(LoginActivity.this, "Please enter your password.", Toast.LENGTH_LONG).show();
+                 tilPassword.setError("Password is required.");
+                 etPassword.requestFocus();
+             }
+             Intent intent = new Intent(this, MainActivity.class);
+             startActivity(intent);
+        }
     }
+
 }

@@ -24,6 +24,18 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="50dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_disruptive_delivery_logo"
+                android:maxWidth="180dp"
+                android:minWidth="100dp"
+            />
+
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
@@ -90,7 +102,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
-            
+
 
             <Button
                 android:id="@+id/loginButton"
