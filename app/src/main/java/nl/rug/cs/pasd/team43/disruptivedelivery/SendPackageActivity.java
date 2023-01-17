@@ -8,9 +8,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,20 +16,18 @@ import android.widget.NumberPicker;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.google.android.material.slider.Slider;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 import nl.rug.cs.pasd.team43.disruptivedelivery.model.AddressInfo;
-import nl.rug.cs.pasd.team43.disruptivedelivery.model.PackageInfo;
+import nl.rug.cs.pasd.team43.disruptivedelivery.model.Order;
 
 public class SendPackageActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
     private AddressInfo senderAddressInfo;
     private AddressInfo receiverAddressInfo;
-    private PackageInfo packageInfo;
+    private Order order;
 
 
     private TextInputLayout tilStreetAndNumberReceiver;

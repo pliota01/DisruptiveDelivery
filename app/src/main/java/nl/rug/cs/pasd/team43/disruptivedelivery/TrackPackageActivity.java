@@ -2,23 +2,23 @@ package nl.rug.cs.pasd.team43.disruptivedelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import java.util.Random;
+import nl.rug.cs.pasd.team43.disruptivedelivery.model.Order;
 
-import nl.rug.cs.pasd.team43.disruptivedelivery.model.PackageInfo;
+public class TrackPackageActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class TrackPackageActivity extends AppCompatActivity {
-
-    private String[] StatusArray = {"EXP", "REJ", "RFP", "TRN", "DEL"};
-
+    private Button btnTrackPackage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_package);
     }
 
-    private PackageInfo getPackage() {
+    private Order getOrder() {
 //        expected_deliver_datetime	Expected Deliver Datetime[...]
 //        actual_deliver_datetime	Actual Deliver Datetime[...]
 //        order_id*	integer
@@ -39,5 +39,15 @@ public class TrackPackageActivity extends AppCompatActivity {
 //            }
 //        }
         return StatusArray[0];
+    }
+
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.btn_track_package) {
+
+        }
+
+         //Intent intent = new Intent(this, MainActivity.class);
+         //startActivity(intent);
     }
 }

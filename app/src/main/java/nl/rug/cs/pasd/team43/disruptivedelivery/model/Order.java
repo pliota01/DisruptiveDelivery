@@ -1,51 +1,62 @@
 package nl.rug.cs.pasd.team43.disruptivedelivery.model;
-import android.os.Build;
 
 import org.apache.commons.text.CharacterPredicates;
 import org.apache.commons.text.RandomStringGenerator;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
-public class PackageInfo {
+public class Order {
+    private final Date sendDate;
     private final int xInMm;
     private final int yInMm;
     private final int zInMm;
-    private final boolean perishable;
     private final boolean breakable;
+    private final boolean perishable;
+
+    private final AddressInfo senderInfo;
+    private final AddressInfo receiverInfo;
+
+    private Delivery lastDelivery;
+
     private final String id;
 
-    private final Date sendDate;
-
-    public PackageInfo(int xInCm, int yInCm, int zInCm, boolean perishable, boolean breakable) {
+    public Order(int xInCm, int yInCm, int zInCm, boolean breakable, boolean perishable, AddressInfo senderInfo, AddressInfo receiverInfo) {
+        sendDate = new Date();
         this.xInMm = xInCm;
         this.yInMm = yInCm;
         this.zInMm = zInCm;
         this.breakable = breakable;
         this.perishable = perishable;
 
+        
+        
+        this.senderInfo = senderInfo;
+        this.receiverInfo = receiverInfo;
+
+
         RandomStringGenerator randomStringGenerator =
                 new RandomStringGenerator.Builder()
                         .withinRange('0', 'z')
                         .filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS)
                         .build();
+        
         id = randomStringGenerator.generate(12); // toUpperCase() if you want
-        sendDate = new Date();
-    }
 
+    }
+    
+    public Date getSendDate() {
+        return sendDate;
+    }
     public int getXInMm() {
-        return 10 * xInMm;
+        return xInMm;
     }
 
     public int getYInMm() {
-        return 10 * yInMm;
+        return yInMm;
     }
 
     public int getZInMm() {
-        return 10 * zInMm;
+        return zInMm;
     }
 
     public boolean isPerishable() {
@@ -56,6 +67,17 @@ public class PackageInfo {
         return breakable;
     }
 
+    public AddressInfo getSenderInfo() {
+        return senderInfo;
+    }
+    
+    public AddressInfo getReceiverInfo() {
+        return receiverInfo;
+    }
+    public Delivery getLastDelivery() {
+        return lastDelivery;
+    }
+    
     public String getId(){
         return id;
     }

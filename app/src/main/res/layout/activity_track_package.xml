@@ -30,5 +30,17 @@
         app:layout_constraintStart_toEndOf="@+id/tv_track_package_by_code"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_track_package"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/track_package"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_track_package_by_code" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

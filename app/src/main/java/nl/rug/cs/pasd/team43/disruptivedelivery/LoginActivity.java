@@ -78,9 +78,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                  Toast.makeText(LoginActivity.this, "Please enter your password.", Toast.LENGTH_LONG).show();
                  tilPassword.setError("Password is required.");
                  etPassword.requestFocus();
+             } else {
+                 Intent intent = new Intent(this, MainActivity.class);
+                 startActivity(intent);
              }
-             Intent intent = new Intent(this, MainActivity.class);
-             startActivity(intent);
         }
     }
 
