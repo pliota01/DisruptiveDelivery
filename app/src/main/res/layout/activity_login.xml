@@ -141,6 +141,13 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/tv_okhttp_results"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Here we show results of okhttp"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>

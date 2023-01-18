@@ -15,12 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
-
-<!--        TODO Add google maps API below-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="${MAPS_API_KEY}" />-->
-        <!--Google Pay-->
+        <activity
+            android:name=".EmployeeActivity"
+            android:exported="false" />
+        <!-- TODO Add google maps API below -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="${MAPS_API_KEY}" /> -->
+        <!-- Google Pay -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
@@ -30,8 +32,18 @@
             android:exported="false" />
         <activity
             android:name=".PaymentActivity"
-            android:exported="false"
+            android:exported="true"
             android:parentActivityName=".SendPackageActivity">
+            <intent-filter>
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -44,6 +56,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -67,11 +80,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--&lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- &lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt; -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

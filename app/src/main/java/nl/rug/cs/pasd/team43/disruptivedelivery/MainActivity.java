@@ -16,6 +16,14 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -77,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // If we got here, the user's action was not recognized.
             // Invoke the superclass to handle it.
             Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-           return true;
+            return true;
         }
         if (id == R.id.item_log_out) {
             // Delete all local data and go to log in activity

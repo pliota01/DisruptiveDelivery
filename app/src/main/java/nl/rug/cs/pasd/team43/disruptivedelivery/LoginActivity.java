@@ -24,8 +24,15 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.IOException;
 import java.util.Objects;
 import android.os.Bundle;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,6 +63,40 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvForgotPassword.setOnClickListener(this);
         tvDontHaveAccount.setOnClickListener(this);
 
+
+
+        TextView tvOkHttp = findViewById(R.id.tv_okhttp_results);
+
+        OkHttpClient client = new OkHttpClient();
+//        String url = "https://reqres.in/api/users?page=2";
+        String url = "https://pasd-webshop-api.onrender.com/docs#/orders/orders_get_api_order__get";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvOkHttp.setText(myResponse);
+                        }
+                    });
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -66,6 +107,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
         }
         if (id == R.id.loginButton) {
+            if(etEmail.getText().toString().matches("employee@dd.com")){
+                Intent intent = new Intent(this, EmployeeActivity.class);
+                startActivity(intent);
+            } else {
              if (TextUtils.isEmpty(etEmail.getText().toString())) {
                  Toast.makeText(LoginActivity.this, "Please enter your email address.", Toast.LENGTH_LONG).show();
                  tilEmail.setError("Email address is required.");
@@ -80,9 +125,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                  etPassword.requestFocus();
              } else {
                  Intent intent = new Intent(this, MainActivity.class);
+                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
                  startActivity(intent);
              }
+             }
         }
+
+
+
+
+
     }
 
 }

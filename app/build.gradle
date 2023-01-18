@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -30,9 +31,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
@@ -53,4 +51,30 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     // Google Pay
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
+    // okhttp3
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    implementation 'com.braintreepayments:card-form:5.4.0'
+
+
+    // to offer card payments
+    implementation 'com.braintreepayments.api:card:4.23.1'
+
+    // to collect device data
+    implementation 'com.braintreepayments.api:data-collector:4.23.1'
+
+    // to offer PayPal
+    implementation 'com.braintreepayments.api:paypal:4.23.1'
+
+    // to offer local payments
+    implementation 'com.braintreepayments.api:local-payment:4.23.1'
+
+    // to offer Google Pay
+    implementation 'com.braintreepayments.api:google-pay:4.23.1'
+
+    // to offer Union Pay
+    implementation 'com.braintreepayments.api:union-pay:4.23.1'
+
+    // to offer Venmo
+    implementation 'com.braintreepayments.api:venmo:4.23.1'
 }
