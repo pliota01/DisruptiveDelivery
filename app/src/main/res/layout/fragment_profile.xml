@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile"
+                android:textSize="50sp"
+                android:layout_margin="20dp"/>
+
+            <include android:id="@+id/profile_item_form_first_name"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_last_name"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_email"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_phone_number"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_street_and_number"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_zipcode"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_city"
+                layout="@layout/profile_item_form"/>
+            <include android:id="@+id/profile_item_form_country"
+                layout="@layout/profile_item_form"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

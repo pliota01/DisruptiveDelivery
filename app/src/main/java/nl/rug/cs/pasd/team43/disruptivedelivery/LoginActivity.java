@@ -1,38 +1,18 @@
 package nl.rug.cs.pasd.team43.disruptivedelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.IOException;
-import java.util.Objects;
-import android.os.Bundle;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,7 +22,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private TextInputLayout tilEmail, tilPassword;
     private EditText etEmail, etPassword;
-    private boolean isEmailValid, isPasswordValid;
 
 
     @Override
@@ -63,41 +42,78 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvForgotPassword.setOnClickListener(this);
         tvDontHaveAccount.setOnClickListener(this);
 
+//
+//        TextView tvOkHttp = findViewById(R.id.tv_okhttp_results);
 
+//        OkHttpClient client = new OkHttpClient();
+////        String url = "https://reqres.in/api/users?page=2";
+//        String url = "https://pasd-webshop-api.onrender.com/docs#/orders/orders_get_api_order__get";
+//
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .build();
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                if (response.isSuccessful()) {
+//                    final String myResponse = response.body().string();
+//
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            tvOkHttp.setText(myResponse);
+//                        }
+//                    });
+//                }
+//            }
+//        });
 
-        TextView tvOkHttp = findViewById(R.id.tv_okhttp_results);
-
-        OkHttpClient client = new OkHttpClient();
-//        String url = "https://reqres.in/api/users?page=2";
-        String url = "https://pasd-webshop-api.onrender.com/docs#/orders/orders_get_api_order__get";
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvOkHttp.setText(myResponse);
-                        }
-                    });
-                }
-            }
-        });
-
-
+//        try {
+//            String response = getResponseFromHttpUrl();
+//            TextView tvOkHttp = findViewById(R.id.tv_okhttp_results);
+//            tvOkHttp.setText(response);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
+
+//    /**
+//     * Gets the response from http Url request
+//     * @return
+//     * @throws IOException
+//     */
+//    public static String getResponseFromHttpUrl() throws IOException {
+//
+//        URL url = new URL("https://pasd-webshop-api.onrender.com/api/order/");
+//        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//        connection.setRequestMethod("GET");
+//        connection.addRequestProperty("Accept","application/json");
+//        connection.addRequestProperty("Content-Type","application/json");
+//        connection.addRequestProperty("Authorization","63ZhgHoqG8DDBVgwJnN7");
+//
+//        try {
+//            InputStream in = connection.getInputStream();
+//
+//            Scanner scanner = new Scanner(in);
+//            scanner.useDelimiter("\\A");
+//
+//            boolean hasInput = scanner.hasNext();
+//            if (hasInput) {
+//                return scanner.next();
+//            } else {
+//                return null;
+//            }
+//        } finally {
+//            connection.disconnect();
+//        }
+//    }
+
 
     @Override
     public void onClick(View view) {
@@ -107,34 +123,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
         }
         if (id == R.id.loginButton) {
-            if(etEmail.getText().toString().matches("employee@dd.com")){
+            String email = etEmail.getText().toString();
+            if (email.matches("employee@dd.com")) {
                 Intent intent = new Intent(this, EmployeeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             } else {
-             if (TextUtils.isEmpty(etEmail.getText().toString())) {
-                 Toast.makeText(LoginActivity.this, "Please enter your email address.", Toast.LENGTH_LONG).show();
-                 tilEmail.setError("Email address is required.");
-                 etEmail.requestFocus();
-             } else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.getText().toString()).matches()) {
-                 Toast.makeText(LoginActivity.this, "Please re-enter your email address.", Toast.LENGTH_LONG).show();
-                 tilEmail.setError("Valid email address is required.");
-                 etEmail.requestFocus();
-             }  else if (TextUtils.isEmpty(etPassword.getText().toString())) {
-                 Toast.makeText(LoginActivity.this, "Please enter your password.", Toast.LENGTH_LONG).show();
-                 tilPassword.setError("Password is required.");
-                 etPassword.requestFocus();
-             } else {
-                 Intent intent = new Intent(this, MainActivity.class);
-                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
-                 startActivity(intent);
-             }
-             }
+                if (TextUtils.isEmpty(email)) {
+                    tilEmail.setError("Email address is required.");
+                    etEmail.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    tilEmail.setError("Valid email address is required.");
+                    etEmail.requestFocus();
+                } else if (TextUtils.isEmpty(etPassword.getText().toString())) {
+                    tilPassword.setError("Password is required.");
+                    etPassword.requestFocus();
+                } else {
+                    // Check if user exists in database
+                    if (isUserInDatabase()) {
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "No such user Exists", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
         }
+    }
 
-
-
-
-
+    private boolean isUserInDatabase() {
+        return false;
     }
 
 }

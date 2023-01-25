@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:paddingHorizontal="20dp"
-    android:id="@+id/layout_postal_address_form">
+    android:id="@+id/constraint_layout_postal_address_form">
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexboxLayout"
