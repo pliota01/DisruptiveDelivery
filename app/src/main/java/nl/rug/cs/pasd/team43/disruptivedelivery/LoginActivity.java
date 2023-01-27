@@ -1,10 +1,14 @@
 package nl.rug.cs.pasd.team43.disruptivedelivery;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +16,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private FirebaseAuth mAuth;
     private TextView tvForgotPassword;
     private TextView tvDontHaveAccount;
     private Button logInBtn;
@@ -42,7 +52,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvForgotPassword.setOnClickListener(this);
         tvDontHaveAccount.setOnClickListener(this);
 
-//
+//        mAuth = FirebaseAuth.getInstance();
+
+
 //        TextView tvOkHttp = findViewById(R.id.tv_okhttp_results);
 
 //        OkHttpClient client = new OkHttpClient();
@@ -124,6 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         if (id == R.id.loginButton) {
             String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
             if (email.matches("employee@dd.com")) {
                 Intent intent = new Intent(this, EmployeeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -135,25 +148,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     tilEmail.setError("Valid email address is required.");
                     etEmail.requestFocus();
-                } else if (TextUtils.isEmpty(etPassword.getText().toString())) {
+                } else if (TextUtils.isEmpty(password)) {
                     tilPassword.setError("Password is required.");
                     etPassword.requestFocus();
                 } else {
-                    // Check if user exists in database
-                    if (isUserInDatabase()) {
-                        Intent intent = new Intent(this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(LoginActivity.this, "No such user Exists", Toast.LENGTH_LONG).show();
-                    }
+//                    mAuth.signInWithEmailAndPassword(email, password)
+//                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<AuthResult> task) {
+//                                    if (task.isSuccessful()) {
+//                                        // Sign in success, update UI with the signed-in user's information
+//                                        Log.d(TAG, "signInWithEmail:success");
+//                                        FirebaseUser user = mAuth.getCurrentUser();
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+//                                    } else {
+//                                        // If sign in fails, display a message to the user.
+//                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+//                                        Toast.makeText(LoginActivity.this, "Authentication failed. Please try again",
+//                                                Toast.LENGTH_SHORT).show();
+////                            updateUI(null);
+//                                    }
+//                                }
+//                            });
                 }
             }
         }
     }
 
-    private boolean isUserInDatabase() {
-        return false;
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if (currentUser != null) {
+//            reload();
+//        }
+//    }
+
+//    private void reload() {
+//        // User is already signed in so go to Main
+//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//    }
 
 }

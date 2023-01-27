@@ -25,9 +25,9 @@ import nl.rug.cs.pasd.team43.disruptivedelivery.model.Order;
 
 public class SendPackageActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
-    private AddressInfo senderAddressInfo;
-    private AddressInfo receiverAddressInfo;
-    private Order order;
+//    private AddressInfo senderAddressInfo;
+//    private AddressInfo receiverAddressInfo;
+//    private Order order;
 
 
     private TextInputLayout tilStreetAndNumberReceiver;

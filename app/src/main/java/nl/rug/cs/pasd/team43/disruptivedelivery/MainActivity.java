@@ -19,6 +19,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -64,10 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.btn_send_package) {
-            Intent intent = new Intent(this, SendPackageActivity.class);
+            Intent intent = new Intent(MainActivity.this, SendPackageActivity.class);
             startActivity(intent);
         } else if (id == R.id.btn_track_package) {
-            Intent intent = new Intent(this, TrackPackageActivity.class);
+            Intent intent = new Intent(MainActivity.this, TrackPackageActivity.class);
             startActivity(intent);
         }
 
@@ -116,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i("MainActivity", "ActionBar Log Out Clicked");
             SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferences_profile), MODE_PRIVATE);
             sharedPreferences.edit().clear().apply();
+//            FirebaseAuth.getInstance().signOut();
+
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -162,8 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 && profileFrag.isVisible() && settingsFrag != null && settingsFrag.isVisible())) {
             onCreateMenu(toolbar.getMenu(), getMenuInflater());
         }
-
-//
         super.onBackPressed();
     }
 }
